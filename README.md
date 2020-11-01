@@ -1,29 +1,38 @@
 # Epicture
 
-Epicture is an EPITECH school project where the goal is to create a mobile app for the imgur website. We used TypeScript React Native with Expo because of the simplicity of it's workflow.
+Epicture is an EPITECH school project, the goal is to create a mobile app based on the imgur API.  
+The app is built with Expo (React Native) and is written in Typescript
 
 ## Requirements
 
-First off, you'll need an Imgur account to use the app.
+#### The Expo Client App
 
-Then, this app uses an imgur application to be allowed to request the public API, so you have to [create one first](https://imgur.com/account/settings/apps).  
-Then replace the callback url and client id variables in the `.env.example` by your own and rename the file into `.env`.
+The Expo App will load the build bundle of the Expo CLI and allow you to test our app without deploying it or building with Android Studio
 
-> the calback url must be `exp://your_dev_server_id` if you build with expo or `epicture://` if you eject you the app.
+Download links:
+- [iOS](https://apps.apple.com/us/app/expo-client/id982107779)
+- [Android](https://play.google.com/store/apps/details?id=host.exp.exponent)
+
+#### An imgur account
+
+The app requires you to login with an imgur account, with email and password **only**: auth with Google or Social medias are not supported
+[Create an account here](https://imgur.com/register).
+
+#### An imgur Oauth2 application
+
+The Oauth2 application is required to request the public API. A callback URL is set in the app and is depedent of you IP because of Expo behavior. The calback URL must be `exp://your_dev_server_id`  
+- [create the Oauth App here](https://imgur.com/account/settings/apps).  
+- replace the callback URL and client id variables in the `.env.example` by your own
+- rename the file into `.env`.
 
 ## Run with Expo
 
 To launch the app:
-- Download the expo app on your phone
+- Open the expo client on your phone
 - Run `npm i` to install dependencies
+- Update and rename your `.env`
 - Run `npm start` to start the development server
-- Scan the QR code displayed in your terminal
-
-## Run without Expo
-
-Object {
-  "NODE_ENV": "development"
-}
+- Scan the QR code displayed in your terminal with your phone
 
 ## Code Structure
 
@@ -79,12 +88,5 @@ Object {
     └── auth.tsx
 ```
 
-## Good to know
-
-- We used Eslint, see configuration in [eslint.yaml](./.eslintrc.yaml)
-- We used `babel-plugin-inline-dotenv` to load the `.env` file, see [babel.config.js](./babel.config.js)
-
-
 ## Authors
 - [Paul Monnery](https://github.com/PaulMonnery)
-- [Théo Ardouin](https://github.com/Qwexta)
