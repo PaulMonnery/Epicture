@@ -102,11 +102,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
     state,
   };
 
-  return (
-    <AuthContext.Provider value={authContext}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={authContext}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = (): AuthContextInterface => {

@@ -8,16 +8,10 @@ import { useCamera } from '../../hooks/useCamera';
 /**
  * Handmade camera screen
  * Expo doesn't support native camera screen
-*/
+ */
 export default function MyCamera(): JSX.Element {
   const navigation = useNavigation();
-  const {
-    cameraRef,
-    cameraHasPermission,
-    cameraType,
-    takePicture,
-    AllowCamera,
-    handleCameraType } = useCamera();
+  const { cameraRef, cameraHasPermission, cameraType, takePicture, AllowCamera, handleCameraType } = useCamera();
 
   if (cameraHasPermission === 0) return <View />;
   if (cameraHasPermission === -1) {
@@ -35,11 +29,7 @@ export default function MyCamera(): JSX.Element {
 
   return (
     <View style={{ flex: 1 }}>
-      <Camera
-        style={{ flex: 1 }}
-        type={cameraType}
-        ref={cameraRef}
-      >
+      <Camera style={{ flex: 1 }} type={cameraType} ref={cameraRef}>
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', margin: 30 }}>
           <TouchableOpacity
             style={{
@@ -49,10 +39,7 @@ export default function MyCamera(): JSX.Element {
             }}
             onPress={handlePictureTaken}
           >
-            <FontAwesome
-              name="camera"
-              style={{ color: '#fff', fontSize: 40 }}
-            />
+            <FontAwesome name="camera" style={{ color: '#fff', fontSize: 40 }} />
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -62,10 +49,7 @@ export default function MyCamera(): JSX.Element {
             }}
             onPress={handleCameraType}
           >
-            <MaterialCommunityIcons
-              name="camera-switch"
-              style={{ color: '#fff', fontSize: 40 }}
-            />
+            <MaterialCommunityIcons name="camera-switch" style={{ color: '#fff', fontSize: 40 }} />
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -80,10 +64,7 @@ export default function MyCamera(): JSX.Element {
             }}
             onPress={navigation.goBack}
           >
-            <Ionicons
-              name="ios-arrow-back"
-              style={{ color: '#000', fontSize: 25 }}
-            />
+            <Ionicons name="ios-arrow-back" style={{ color: '#000', fontSize: 25 }} />
           </TouchableOpacity>
         </View>
       </Camera>

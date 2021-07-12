@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 
 /**
  * Simple screen that displays stats and informations about the user
-*/
+ */
 export default function ProfileAboutScreen(): JSX.Element {
   const [userBase, setUserBase] = useState<UserBase | null>(null);
   const [nbPosts, setNbPosts] = useState(0);
@@ -80,13 +80,8 @@ export default function ProfileAboutScreen(): JSX.Element {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={[styles.statBox]}
-        activeOpacity={0.85}
-      >
-        <Text style={styles.buttonText}>
-          {userBase?.reputation_name}
-        </Text>
+      <TouchableOpacity style={[styles.statBox]} activeOpacity={0.85}>
+        <Text style={styles.buttonText}>{userBase?.reputation_name}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <UpvotePicto color="#56b474" width={60} height={60} />
           <Text style={{ marginLeft: -5, color: '#56b474', fontSize: 40, fontWeight: 'bold' }}>
@@ -99,48 +94,28 @@ export default function ProfileAboutScreen(): JSX.Element {
         style={[styles.statBox, { flexDirection: 'row', justifyContent: 'space-around' }]}
         activeOpacity={0.85}
       >
-
         <View style={{ marginVertical: '5%', alignItems: 'center', flexDirection: 'column', width: '30%' }}>
           <PostPicto color="#56b474" width={45} height={45} />
           <Text style={{ color: '#fff', fontSize: 15, fontWeight: 'bold' }}>Posts</Text>
-          <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>
-            {nbPosts}
-          </Text>
+          <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>{nbPosts}</Text>
         </View>
         <View style={{ marginVertical: '5%', alignItems: 'center', flexDirection: 'column', width: '30%' }}>
           <HeartPicto color="#6fcdbd" width={45} height={45} />
           <Text style={{ color: '#fff', fontSize: 15, fontWeight: 'bold' }}>Favorites</Text>
-          <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>
-            {nbFavorites}
-          </Text>
+          <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>{nbFavorites}</Text>
         </View>
         <View style={{ marginVertical: '5%', alignItems: 'center', flexDirection: 'column', width: '30%' }}>
           <CommentPicto color="#7d84ef" width={45} height={45} />
           <Text style={{ color: '#fff', fontSize: 15, fontWeight: 'bold' }}>Comments</Text>
-          <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>
-            {nbComments}
-          </Text>
+          <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>{nbComments}</Text>
         </View>
-
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.statBox]}
-        activeOpacity={0.85}
-      >
-        <Text style={styles.bio}>
-          {userBase?.bio}
-        </Text>
+      <TouchableOpacity style={[styles.statBox]} activeOpacity={0.85}>
+        <Text style={styles.bio}>{userBase?.bio}</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.statBox]}
-        activeOpacity={0.85}
-      >
-        <Text style={styles.bio}>
-          Joined
-          {' '}
-          { new Date(userBase?.created * 1000).toDateString()}
-        </Text>
+      <TouchableOpacity style={[styles.statBox]} activeOpacity={0.85}>
+        <Text style={styles.bio}>Joined {new Date(userBase?.created * 1000).toDateString()}</Text>
       </TouchableOpacity>
     </View>
   );

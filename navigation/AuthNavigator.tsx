@@ -8,13 +8,8 @@ const AuthStack = createStackNavigator<AuthStackParamList>();
 
 export default function AuthNavigator(): JSX.Element {
   return (
-    <AuthStack.Navigator
-      headerMode="none"
-    >
-      <AuthStack.Screen
-        name="Login"
-        component={AuthScreen}
-      />
+    <AuthStack.Navigator headerMode="none">
+      <AuthStack.Screen name="Login" component={AuthScreen} />
     </AuthStack.Navigator>
   );
 }

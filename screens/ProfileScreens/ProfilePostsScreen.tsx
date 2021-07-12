@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 /**
  * DIsplay the user public posts
  * Posts can be removed by pressing the trash icon
-*/
+ */
 export default function SubmissionsScreen(): JSX.Element {
   const navigation = useNavigation();
   const { images, refreshing, handleSuppress, handleRefresh } = useSubmissions();

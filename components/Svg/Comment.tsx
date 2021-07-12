@@ -1,15 +1,9 @@
 import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
 
-function SvgComponent(props: React.SVGProps<SVGSVGElement>):JSX.Element {
+function SvgComponent(props: React.SVGProps<SVGSVGElement>): JSX.Element {
   return (
-    <Svg
-      width={32}
-      height={32}
-      viewBox="0 0 32 32"
-      fill="none"
-      {...props}
-    >
+    <Svg width={32} height={32} viewBox="0 0 32 32" fill="none" {...props}>
       <Path
         fill="currentColor"
         clipRule="evenodd"
