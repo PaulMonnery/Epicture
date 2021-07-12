@@ -23,7 +23,6 @@ rules:
   object-curly-newline: "off"
 
   react/react-in-jsx-scope: "off"
-  react/prop-types: ["error", { "ignore": ["navigation"] }]
   react/require-default-props: "off"
   react/jsx-one-expression-per-line: "off"
   react/jsx-props-no-spreading: "off"
@@ -31,3 +30,4 @@ rules:
   prettier/prettier: warn
   import/prefer-default-export: "off"
   jsx-a11y/accessible-emoji: "off"
+  "@typescript-eslint/no-non-null-assertion": off

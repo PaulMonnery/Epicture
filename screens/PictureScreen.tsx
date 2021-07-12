@@ -238,6 +238,8 @@ export default function PictureScreen({ route }: { route: { params: { data: Imag
               onPress={(): void => alert('comment')}
             >
               <UpvotePicto
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 style={{ transform: [{ rotate: '180deg' }] }}
                 strokeWidth={2}
                 stroke="white"

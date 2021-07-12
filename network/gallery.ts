@@ -40,9 +40,9 @@ export async function getGallery({ section, sort, page, window }: GalleryOptions
       is_album: item.is_album,
       description: item.is_album ? item.images[0].description : item.description,
       link: item.is_album ? item.images[0].link : item.link,
-      width: item.is_album ? item.images[0].width : item.width,
-      height: item.is_album ? item.images[0].height : item.height,
-      type: item.is_album ? item.images[0].type : item.type,
+      width: item.is_album ? item.images[0].width : item.width!,
+      height: item.is_album ? item.images[0].height : item.height!,
+      type: item.is_album ? item.images[0].type : item.type!,
     }),
   );
 
@@ -80,9 +80,9 @@ export async function searchGallery(query: string, page: number): Promise<Image[
       is_album: item.is_album,
       description: item.is_album ? item.images[0].description : item.description,
       link: item.is_album ? item.images[0].link : item.link,
-      width: item.is_album ? item.images[0].width : item.width,
-      height: item.is_album ? item.images[0].height : item.height,
-      type: item.is_album ? item.images[0].type : item.type,
+      width: item.is_album ? item.images[0].width : item.width!,
+      height: item.is_album ? item.images[0].height : item.height!,
+      type: item.is_album ? item.images[0].type : item.type!,
     }),
   );
 

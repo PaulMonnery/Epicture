@@ -115,7 +115,9 @@ export default function ProfileAboutScreen(): JSX.Element {
         <Text style={styles.bio}>{userBase?.bio}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.statBox]} activeOpacity={0.85}>
-        <Text style={styles.bio}>Joined {new Date(userBase?.created * 1000).toDateString()}</Text>
+        <Text style={styles.bio}>
+          Joined {userBase?.created ? new Date(userBase?.created * 1000).toDateString() : '...'}
+        </Text>
       </TouchableOpacity>
     </View>
   );
