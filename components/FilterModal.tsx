@@ -77,7 +77,7 @@ interface FilterModalProps {
 /**
  * Modal used to change feed options.
  * Uses `react-native-modal`
-*/
+ */
 const FilterModal = ({ close, updateInfo, shown, info }: FilterModalProps): JSX.Element => (
   <Modal
     animationIn="fadeIn"
@@ -93,30 +93,54 @@ const FilterModal = ({ close, updateInfo, shown, info }: FilterModalProps): JSX.
       <View style={{ flexDirection: 'row', marginTop: 10 }}>
         <View style={{ flexDirection: 'column', marginHorizontal: 20 }}>
           <Text style={styles.modalTitle}>Post Type</Text>
-          <TouchableOpacity activeOpacity={1} onPress={() => updateInfo({ ...info, section: 'hot' })} style={styles.modalButton}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => updateInfo({ ...info, section: 'hot' })}
+            style={styles.modalButton}
+          >
             {info.section === 'hot' ? <View style={styles.selectedIndicator} /> : <></>}
             <Text style={[styles.modalText, { fontWeight: info.section === 'hot' ? 'bold' : '600' }]}>Hot</Text>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={1} onPress={() => updateInfo({ ...info, section: 'top' })} style={styles.modalButton}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => updateInfo({ ...info, section: 'top' })}
+            style={styles.modalButton}
+          >
             {info.section === 'top' ? <View style={styles.selectedIndicator} /> : <></>}
             <Text style={[styles.modalText, { fontWeight: info.section === 'top' ? 'bold' : '600' }]}>Top</Text>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={1} onPress={() => updateInfo({ ...info, section: 'user' })} style={styles.modalButton}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => updateInfo({ ...info, section: 'user' })}
+            style={styles.modalButton}
+          >
             {info.section === 'user' ? <View style={styles.selectedIndicator} /> : <></>}
             <Text style={[styles.modalText, { fontWeight: info.section === 'user' ? 'bold' : '600' }]}>User</Text>
           </TouchableOpacity>
         </View>
         <View style={{ flexDirection: 'column', marginHorizontal: 20 }}>
           <Text style={styles.modalTitle}>Post Sorting</Text>
-          <TouchableOpacity activeOpacity={1} onPress={() => updateInfo({ ...info, sort: 'viral' })} style={styles.modalButton}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => updateInfo({ ...info, sort: 'viral' })}
+            style={styles.modalButton}
+          >
             {info.sort === 'viral' ? <View style={styles.selectedIndicator} /> : <></>}
             <Text style={[styles.modalText, { fontWeight: info.sort === 'viral' ? 'bold' : '600' }]}>Viral</Text>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={1} onPress={() => updateInfo({ ...info, sort: 'top' })} style={styles.modalButton}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => updateInfo({ ...info, sort: 'top' })}
+            style={styles.modalButton}
+          >
             {info.sort === 'top' ? <View style={styles.selectedIndicator} /> : <></>}
             <Text style={[styles.modalText, { fontWeight: info.sort === 'top' ? 'bold' : '600' }]}>Top</Text>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={1} onPress={() => updateInfo({ ...info, sort: 'time' })} style={styles.modalButton}>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={() => updateInfo({ ...info, sort: 'time' })}
+            style={styles.modalButton}
+          >
             {info.sort === 'time' ? <View style={styles.selectedIndicator} /> : <></>}
             <Text style={[styles.modalText, { fontWeight: info.sort === 'time' ? 'bold' : '600' }]}>Time</Text>
           </TouchableOpacity>

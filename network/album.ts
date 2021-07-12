@@ -36,7 +36,10 @@ export async function voteAlbum(id: string, vote: 'up' | 'down' | 'veto'): Promi
 }
 
 export async function uploadAlbum(
-  image_id: string, title: string, description: string, privacy: boolean,
+  image_id: string,
+  title: string,
+  description: string,
+  privacy: boolean,
 ): Promise<Gallery> {
   const data = new FormData();
   const token = await getAuthToken();

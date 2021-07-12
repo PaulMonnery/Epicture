@@ -17,20 +17,9 @@ function RootNavigator(): JSX.Element {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen
-        name="Root"
-        component={state.userToken ? BottomTabNavigator : AuthNavigator}
-      />
-      <Stack.Screen
-        name="PictureScreen"
-        component={Picture}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="CameraScreen"
-        component={Camera}
-        options={{ headerShown: false, gestureEnabled: false }}
-      />
+      <Stack.Screen name="Root" component={state.userToken ? BottomTabNavigator : AuthNavigator} />
+      <Stack.Screen name="PictureScreen" component={Picture} options={{ headerShown: false }} />
+      <Stack.Screen name="CameraScreen" component={Camera} options={{ headerShown: false, gestureEnabled: false }} />
       <Stack.Screen
         name="PostDraftScreen"
         component={PostDraft}

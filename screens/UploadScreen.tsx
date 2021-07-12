@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 /**
  * Screen with 3 options to create a post: *Camera*, *Camera roll* and *File browser*.
  * Leads to PostDraft Screen
-*/
+ */
 export default function UploadScreen(): JSX.Element {
   const pickImage = useImagePicker();
   const { cameraHasPermission, AllowCamera } = useCamera();
@@ -47,11 +47,11 @@ export default function UploadScreen(): JSX.Element {
 
   const openCamera = async (): Promise<void> => {
     if (cameraHasPermission !== 1) {
-      if (await AllowCamera() === 1) navigation.navigate('CameraScreen');
+      if ((await AllowCamera()) === 1) navigation.navigate('CameraScreen');
     } else navigation.navigate('CameraScreen');
   };
 
-  const onPickImage = async ():Promise<void> => {
+  const onPickImage = async (): Promise<void> => {
     const res = await pickImage();
     if (res) navigation.navigate('PostDraftScreen', { image: res });
   };
@@ -60,10 +60,15 @@ export default function UploadScreen(): JSX.Element {
     const res = await DocumentPicker.getDocumentAsync({ type: 'image/*' });
     if (res.type === 'success') {
       Image.getSize(res.uri, async (width, height) => {
-        const imageData = await ImageManipulator.manipulateAsync(res.uri, undefined,
-          { base64: true });
+        const imageData = await ImageManipulator.manipulateAsync(res.uri, undefined, { base64: true });
         const ext = res.uri.substr(res.uri.lastIndexOf('.') + 1).toLocaleLowerCase();
-        const img = { uri: res.uri, type: ext === 'mp4' || ext === 'mov' ? 'video' : 'image', height, width, base64: imageData.base64 };
+        const img = {
+          uri: res.uri,
+          type: ext === 'mp4' || ext === 'mov' ? 'video' : 'image',
+          height,
+          width,
+          base64: imageData.base64,
+        };
         navigation.navigate('PostDraftScreen', { image: img });
       });
     }
@@ -71,46 +76,19 @@ export default function UploadScreen(): JSX.Element {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={openCamera}
-        style={styles.button}
-        activeOpacity={0.85}
-      >
-        <LinearGradient
-          style={styles.gradient}
-          colors={['#e5afcd', '#9cbae6']}
-        >
-          <Text style={styles.buttonText}>
-            Camera
-          </Text>
+      <TouchableOpacity onPress={openCamera} style={styles.button} activeOpacity={0.85}>
+        <LinearGradient style={styles.gradient} colors={['#e5afcd', '#9cbae6']}>
+          <Text style={styles.buttonText}>Camera</Text>
         </LinearGradient>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={onPickImage}
-        activeOpacity={0.85}
-      >
-        <LinearGradient
-          style={styles.gradient}
-          colors={['#edbb37', '#59bf9d']}
-        >
-          <Text style={styles.buttonText}>
-            Import from photo library
-          </Text>
+      <TouchableOpacity style={styles.button} onPress={onPickImage} activeOpacity={0.85}>
+        <LinearGradient style={styles.gradient} colors={['#edbb37', '#59bf9d']}>
+          <Text style={styles.buttonText}>Import from photo library</Text>
         </LinearGradient>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={openFileBrowser}
-        activeOpacity={0.85}
-      >
-        <LinearGradient
-          style={styles.gradient}
-          colors={['#fd4127', '#fc9e40']}
-        >
-          <Text style={styles.buttonText}>
-            Browse
-          </Text>
+      <TouchableOpacity style={styles.button} onPress={openFileBrowser} activeOpacity={0.85}>
+        <LinearGradient style={styles.gradient} colors={['#fd4127', '#fc9e40']}>
+          <Text style={styles.buttonText}>Browse</Text>
         </LinearGradient>
       </TouchableOpacity>
     </View>

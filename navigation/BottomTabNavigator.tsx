@@ -26,12 +26,7 @@ const FavoriteStack = createStackNavigator<FavoriteParamList>();
 const ProfileStack = createStackNavigator<ProfileParamList>();
 
 const LinearGradientHeader = (): JSX.Element => (
-  <LinearGradient
-    colors={['#397195', '#4ba06a']}
-    style={{ flex: 1 }}
-    start={{ x: 0, y: 0 }}
-    end={{ x: 1, y: 0 }}
-  />
+  <LinearGradient colors={['#397195', '#4ba06a']} style={{ flex: 1 }} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} />
 );
 
 function HomeNavigator(): JSX.Element {
@@ -140,35 +135,35 @@ export default function BottomTabNavigator(): JSX.Element {
         name="Home"
         component={HomeNavigator}
         options={{
-          tabBarIcon: ({ color }: {color: string}) => <AntDesign size={30} name="home" color={color} />,
+          tabBarIcon: ({ color }: { color: string }) => <AntDesign size={30} name="home" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Search"
         component={SearchNavigator}
         options={{
-          tabBarIcon: ({ color }: {color: string}) => <AntDesign size={30} name="search1" color={color} />,
+          tabBarIcon: ({ color }: { color: string }) => <AntDesign size={30} name="search1" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Upload"
         component={UploadNavigator}
         options={{
-          tabBarIcon: ({ color }: {color: string}) => <Entypo size={30} name="squared-plus" color={color} />,
+          tabBarIcon: ({ color }: { color: string }) => <Entypo size={30} name="squared-plus" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Favorite"
         component={FavoriteNavigator}
         options={{
-          tabBarIcon: ({ color }: {color: string}) => <AntDesign size={30} name="hearto" color={color} />,
+          tabBarIcon: ({ color }: { color: string }) => <AntDesign size={30} name="hearto" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Profile"
         component={ProfileNavigator}
         options={{
-          tabBarIcon: ({ color }: {color: string}) => <MaterialIcons size={30} name="person-outline" color={color} />,
+          tabBarIcon: ({ color }: { color: string }) => <MaterialIcons size={30} name="person-outline" color={color} />,
         }}
       />
     </BottomTab.Navigator>

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 /**
  * Landing page component of the App, calls displays the user feed.
  * Can filter posts by *section*, *time* and *sort*
-*/
+ */
 export default function HomeScreen(): JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
   const navigation = useNavigation();
@@ -27,10 +27,7 @@ export default function HomeScreen(): JSX.Element {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <TouchableOpacity
-          onPress={() => setShowModal(true)}
-          style={{ padding: 10, marginLeft: 10 }}
-        >
+        <TouchableOpacity onPress={() => setShowModal(true)} style={{ padding: 10, marginLeft: 10 }}>
           <FilterPicto color="white" width={18} height={18} />
         </TouchableOpacity>
       ),
@@ -47,12 +44,7 @@ export default function HomeScreen(): JSX.Element {
   }
   return (
     <View>
-      <FilterModal
-        info={info}
-        shown={showModal}
-        close={() => setShowModal(false)}
-        updateInfo={setInfo}
-      />
+      <FilterModal info={info} shown={showModal} close={() => setShowModal(false)} updateInfo={setInfo} />
       <FlatList
         data={images}
         refreshing={refreshing}

@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 /**
  * first screen when installed, opens a web browser to get the auth token
  * Updates the auth context on succes
-*/
+ */
 export default function AuthScreen(): JSX.Element {
   const { signIn } = useAuth();
   async function handleHelpPress() {
@@ -52,24 +52,11 @@ export default function AuthScreen(): JSX.Element {
     }
   }
   return (
-    <LinearGradient
-      style={styles.container}
-      colors={['#0d134f', '#00cdac']}
-    >
+    <LinearGradient style={styles.container} colors={['#0d134f', '#00cdac']}>
       <Text style={styles.title}>Epicture</Text>
       <Text style={styles.subtitle}>An EPITECH project</Text>
-      <LoginButton
-        onPress={handleHelpPress}
-        text="Login with imgur"
-        width="80%"
-        buttonStyle={{ marginTop: 70 }}
-      />
-      <Image
-        style={styles.logo}
-        source={ImgurLogo}
-        resizeMethod="scale"
-        resizeMode="cover"
-      />
+      <LoginButton onPress={handleHelpPress} text="Login with imgur" width="80%" buttonStyle={{ marginTop: 70 }} />
+      <Image style={styles.logo} source={ImgurLogo} resizeMethod="scale" resizeMode="cover" />
     </LinearGradient>
   );
 }

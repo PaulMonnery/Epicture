@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 /**
  * Profile screen with profile user picture, score and verification.
  * Displays a sub tab navigator
-*/
+ */
 export default function ProfileScreen(): JSX.Element {
   const [state] = useState(useAuth().state);
   const [userBase, setUserBase] = useState<UserBase | null>(null);
@@ -47,12 +47,16 @@ export default function ProfileScreen(): JSX.Element {
       'You are about to sign out, are you sure?',
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Yup',
+        {
+          text: 'Yup',
           onPress: async () => {
             try {
               await signOut();
-            } catch (error) { alert(error.message); }
-          } },
+            } catch (error) {
+              alert(error.message);
+            }
+          },
+        },
       ],
       { cancelable: false },
     );
@@ -61,26 +65,38 @@ export default function ProfileScreen(): JSX.Element {
   return (
     // eslint-disable-next-line
     <React.Fragment>
-      <LinearGradient
-        colors={['#a96465', '#321d35']}
-        style={styles.container}
-      >
+      <LinearGradient colors={['#a96465', '#321d35']} style={styles.container}>
         <TouchableOpacity style={styles.signout} onPress={confirmSignOut}>
           <LogoutPicto color="white" width={20} height={20} />
         </TouchableOpacity>
         <View style={{ flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-start', margin: 15 }}>
-          <Image
-            style={{ width: 100, height: 100, borderRadius: 50 }}
-            source={{ uri: userBase?.avatar }}
-          />
+          <Image style={{ width: 100, height: 100, borderRadius: 50 }} source={{ uri: userBase?.avatar }} />
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ alignSelf: 'flex-start', marginLeft: 10, color: 'white', fontWeight: 'bold', fontSize: 27, marginBottom: 10 }}>
-              { state.username || '' }
+            <Text
+              style={{
+                alignSelf: 'flex-start',
+                marginLeft: 10,
+                color: 'white',
+                fontWeight: 'bold',
+                fontSize: 27,
+                marginBottom: 10,
+              }}
+            >
+              {state.username || ''}
             </Text>
-            <Text style={{ alignSelf: 'flex-start', marginLeft: 12, color: 'white', fontWeight: '600', fontSize: 17, textTransform: 'uppercase' }}>
-              { userBase?.reputation || '' }
+            <Text
+              style={{
+                alignSelf: 'flex-start',
+                marginLeft: 12,
+                color: 'white',
+                fontWeight: '600',
+                fontSize: 17,
+                textTransform: 'uppercase',
+              }}
+            >
+              {userBase?.reputation || ''}
               {userBase?.reputation ? ' · ' : ''}
-              {userBase?.reputation_name || '' }
+              {userBase?.reputation_name || ''}
             </Text>
           </View>
         </View>

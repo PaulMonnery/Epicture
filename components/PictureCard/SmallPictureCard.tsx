@@ -43,10 +43,10 @@ interface SmallPictureCardProps {
   onPress?: () => void;
   onSuppress?: (id: string) => void;
 
-  id : string;
-  width : number;
-  height : number;
-  ups : number;
+  id: string;
+  width: number;
+  height: number;
+  ups: number;
   link: string;
   type: string;
   title: string;
@@ -56,14 +56,23 @@ interface SmallPictureCardProps {
 /**
  * Picture card component used in the favorites and submissions screens.
  * Receives all the API info by props
-*/
-const SmallPictureCard = (
-  { onPress, onSuppress, style, id, width, height, ups, link, type, title, cardType }
-  : SmallPictureCardProps,
-): JSX.Element => {
-  const getDimension = (): {width: number, height: number} => {
-    const ratio = (Dimensions.window.width / 2.1) / width;
-    return ({ width, height: height * ratio });
+ */
+const SmallPictureCard = ({
+  onPress,
+  onSuppress,
+  style,
+  id,
+  width,
+  height,
+  ups,
+  link,
+  type,
+  title,
+  cardType,
+}: SmallPictureCardProps): JSX.Element => {
+  const getDimension = (): { width: number; height: number } => {
+    const ratio = Dimensions.window.width / 2.1 / width;
+    return { width, height: height * ratio };
   };
 
   const handleSuppress = async () => {
@@ -72,12 +81,16 @@ const SmallPictureCard = (
       `You are about to delete one of you ${cardType}s, are you sure?`,
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Yup',
+        {
+          text: 'Yup',
           onPress: async () => {
             try {
               if (onSuppress) onSuppress(id);
-            } catch (error) { alert(error.message); }
-          } },
+            } catch (error) {
+              alert(error.message);
+            }
+          },
+        },
       ],
       { cancelable: false },
     );
@@ -86,7 +99,9 @@ const SmallPictureCard = (
   const handleShare = async () => {
     try {
       await Share.share({ url: link });
-    } catch (error) { alert(error.message); }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -94,60 +109,55 @@ const SmallPictureCard = (
       onPress={onPress}
       onLongPress={handleShare}
       activeOpacity={0.95}
-      style={[style, styles.container,
-        { width: Dimensions.window.width / 2.1 }]}
+      style={[style, styles.container, { width: Dimensions.window.width / 2.1 }]}
     >
-      {
-        type === 'video/mp4'
-          ? (
-            <Video
-              source={{ uri: link }}
-              shouldPlay
-              style={[styles.image, { height: getDimension().height }]}
-              isLooping
-              isMuted
-              usePoster
-              resizeMode="contain"
-            />
-          )
-          : (
-            <Image
-              source={{ uri: link }}
-              style={[styles.image, { height: getDimension().height }]}
-            />
-          )
-      }
+      {type === 'video/mp4' ? (
+        <Video
+          source={{ uri: link }}
+          shouldPlay
+          style={[styles.image, { height: getDimension().height }]}
+          isLooping
+          isMuted
+          usePoster
+          resizeMode="contain"
+        />
+      ) : (
+        <Image source={{ uri: link }} style={[styles.image, { height: getDimension().height }]} />
+      )}
       <View style={styles.footer}>
         <Text
           numberOfLines={2}
           ellipsizeMode="tail"
           style={{
-            color: 'white', marginTop: 10, marginHorizontal: 10, fontWeight: 'bold', fontSize: 15, alignSelf: 'flex-start' }}
+            color: 'white',
+            marginTop: 10,
+            marginHorizontal: 10,
+            fontWeight: 'bold',
+            fontSize: 15,
+            alignSelf: 'flex-start',
+          }}
         >
           {title}
         </Text>
-        <View style={[
-          styles.buttonsRow, {
-            justifyContent: 'space-between',
-            marginHorizontal: 7,
-          }]}
+        <View
+          style={[
+            styles.buttonsRow,
+            {
+              justifyContent: 'space-between',
+              marginHorizontal: 7,
+            },
+          ]}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <UpvotePicto color="#8e9094" width={20} height={20} />
-            <Text style={{ color: '#8e9094' }}>
-              {ups}
-              {' '}
-              points
-            </Text>
+            <Text style={{ color: '#8e9094' }}>{ups} points</Text>
           </View>
           <TouchableOpacity onPress={handleSuppress}>
-            { cardType === 'favorite' ? (
-              <Ionicons
-                size={20}
-                color="#43d1bd"
-                name="ios-heart"
-              />
-            ) : (<TrashPicto color="white" height={25} width={25} />)}
+            {cardType === 'favorite' ? (
+              <Ionicons size={20} color="#43d1bd" name="ios-heart" />
+            ) : (
+              <TrashPicto color="white" height={25} width={25} />
+            )}
           </TouchableOpacity>
         </View>
       </View>

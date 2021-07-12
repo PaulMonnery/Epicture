@@ -28,6 +28,6 @@ export function useImagePicker(): () => Promise<ImageInfo | null> {
       quality: 1,
       base64: true,
     });
-    return (result.cancelled ? null : result);
+    return result.cancelled ? null : result;
   };
 }

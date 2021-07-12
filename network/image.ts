@@ -4,9 +4,7 @@ import { getAuthToken } from '../utils/auth';
 import Gallery from '../types/gallery';
 import NewPostDto from '../types/newPost';
 
-export async function uploadImage(
-  image_url: string, title: string, description: string,
-): Promise<NewPostDto> {
+export async function uploadImage(image_url: string, title: string, description: string): Promise<NewPostDto> {
   const data = new FormData();
   const token = await getAuthToken();
 
@@ -29,9 +27,7 @@ export async function uploadImage(
   return ret.data.data;
 }
 
-export async function shareImage(
-  image_id: string, title: string, mature: boolean,
-): Promise<Gallery> {
+export async function shareImage(image_id: string, title: string, mature: boolean): Promise<Gallery> {
   const data = new FormData();
   const token = await getAuthToken();
 

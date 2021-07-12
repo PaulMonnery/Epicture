@@ -45,8 +45,7 @@ const styles = StyleSheet.create({
   },
   textCheckboxZone: {
     marginLeft: 10,
-    color:
-    'white',
+    color: 'white',
     fontSize: 16,
     marginRight: '20%',
   },
@@ -55,10 +54,22 @@ const styles = StyleSheet.create({
 /**
  * Post creation Screen.
  * A *title* is required and the *description* is optional
-*/
-export default function PostDraft({ route }: {route: { params: { image: {
-  uri: string, height: number, width: number, type: string, base64: string
-}}}}): JSX.Element {
+ */
+export default function PostDraft({
+  route,
+}: {
+  route: {
+    params: {
+      image: {
+        uri: string;
+        height: number;
+        width: number;
+        type: string;
+        base64: string;
+      };
+    };
+  };
+}): JSX.Element {
   const navigation = useNavigation();
   const history = useNavigationState((state) => state.routes);
   const [publicMode, setPublicMode] = React.useState<boolean>(true);
@@ -83,10 +94,7 @@ export default function PostDraft({ route }: {route: { params: { image: {
     };
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity
-          onPress={handlePost}
-          style={{ padding: 20 }}
-        >
+        <TouchableOpacity onPress={handlePost} style={{ padding: 20 }}>
           <Text style={{ fontWeight: 'bold', color: '#757a83', fontSize: 16 }}>{loading ? 'Loading' : 'Post'}</Text>
         </TouchableOpacity>
       ),
@@ -99,7 +107,7 @@ export default function PostDraft({ route }: {route: { params: { image: {
         </TouchableOpacity>
       ),
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigation, history, loading, title, description, matureMode, publicMode]);
 
   return (

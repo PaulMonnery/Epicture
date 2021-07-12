@@ -20,7 +20,7 @@ export default function useFeed(): {
       if (gallery) setImages(gallery);
     };
     if (!images && !refreshing) loadGallery();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
 
   useEffect(() => {
@@ -55,10 +55,5 @@ export default function useFeed(): {
     }
   };
 
-  return { images,
-    refreshing,
-    info,
-    setInfo,
-    handleRefresh,
-    loadNewPage };
+  return { images, refreshing, info, setInfo, handleRefresh, loadNewPage };
 }

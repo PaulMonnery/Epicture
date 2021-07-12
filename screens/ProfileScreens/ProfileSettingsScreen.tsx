@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
 /**
  * Profile subscreen
  * Displays the current user settings and allow him to update them
-*/
+ */
 export default function ProfileSettingsScreen(): JSX.Element {
   const [settings, setSettings] = useState<Settings | null>(null);
   const [bio, setBio] = useState<string | null>(null);
@@ -64,8 +64,12 @@ export default function ProfileSettingsScreen(): JSX.Element {
   const handleSubmit = async () => {
     if (settings && bio) {
       await updateUserSettings(
-        settings.account_url, bio, settings.messaging_enabled, settings.public_images,
-        settings.show_mature, settings.newsletter_subscribed,
+        settings.account_url,
+        bio,
+        settings.messaging_enabled,
+        settings.public_images,
+        settings.show_mature,
+        settings.newsletter_subscribed,
       );
     }
   };
@@ -100,33 +104,30 @@ export default function ProfileSettingsScreen(): JSX.Element {
         <View style={styles.checkboxContainer}>
           <CheckBox
             checked={settings?.show_mature || false}
-            onPress={() => settings
-              && setSettings({ ...settings, show_mature: !settings.show_mature })}
+            onPress={() => settings && setSettings({ ...settings, show_mature: !settings.show_mature })}
           />
           <Text style={styles.checkboxText}>Show mature posts and comments</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <CheckBox
             checked={settings?.messaging_enabled || false}
-            onPress={() => settings
-              && setSettings({ ...settings, messaging_enabled: !settings.messaging_enabled })}
+            onPress={() => settings && setSettings({ ...settings, messaging_enabled: !settings.messaging_enabled })}
           />
           <Text style={styles.checkboxText}>Allow direct messaging</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <CheckBox
             checked={settings?.public_images || false}
-            onPress={() => settings
-              && setSettings({ ...settings, public_images: !settings.public_images })}
+            onPress={() => settings && setSettings({ ...settings, public_images: !settings.public_images })}
           />
           <Text style={styles.checkboxText}>Set images as public by default</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <CheckBox
             checked={settings?.newsletter_subscribed || false}
-            onPress={() => settings && setSettings(
-              { ...settings, newsletter_subscribed: !settings.newsletter_subscribed },
-            )}
+            onPress={() =>
+              settings && setSettings({ ...settings, newsletter_subscribed: !settings.newsletter_subscribed })
+            }
           />
           <Text style={styles.checkboxText}>Subscription to news letter</Text>
         </View>
