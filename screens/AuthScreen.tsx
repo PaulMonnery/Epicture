@@ -18,11 +18,13 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     marginTop: 160,
+    color: 'white'
   },
   subtitle: {
     fontSize: 25,
     fontWeight: 'bold',
     marginTop: 50,
+    color: 'white'
   },
   logo: {
     position: 'absolute',
