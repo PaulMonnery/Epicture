@@ -5,7 +5,7 @@ import { deleteAlbum } from '../network/album';
 import Image from '../types/image';
 
 export default function useSubmissions(): {
-  images: Image[] | undefined;
+  images: Image[];
   refreshing: boolean;
   handleSuppress: (id: string) => void;
   handleRefresh: () => Promise<void>;
