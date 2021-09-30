@@ -18,7 +18,18 @@ Download links:
 The app requires you to login with an imgur account, with email and password **only**: auth with Google or Social medias are not supported
 [Create an account here](https://imgur.com/register).
 
-#### An imgur Oauth2 application
+
+## Run the App with no install
+
+If you want to test the app without building local code, it is very simple:
+
+- Install the expo app and create your imgur account
+- Visist the [expo dev page](https://expo.dev/@paulmonnery/Epicture) of the project and scan the QR Code with your app or camera
+- Enjoy the app with your Imgur account
+
+## Build the app
+
+#### Create an imgur Oauth2 application
 
 The Oauth2 application is required to request the public API. A callback URL is set in the app and is depedent of you IP because of Expo behavior. The calback URL must be `exp://your_dev_server_id`  
 - [create the Oauth App here](https://imgur.com/account/settings/apps).  
@@ -28,10 +39,9 @@ The Oauth2 application is required to request the public API. A callback URL is 
 ## Run with Expo
 
 To launch the app:
-- Open the expo client on your phone
-- Run `npm i` to install dependencies
-- Update and rename your `.env`
-- Run `npm start` to start the development server
+- Install the expo client on your phone
+- Run `yarn install` to install dependencies
+- Run `yarn start` to start the development server
 - Scan the QR code displayed in your terminal with your phone
 
 ## Code Structure
