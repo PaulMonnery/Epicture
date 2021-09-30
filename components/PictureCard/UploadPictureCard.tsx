@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
 });
 
 interface ImageType {
-  uri: string,
-  height: number,
-  width: number,
-  type: string
+  uri: string;
+  height: number;
+  width: number;
+  type: string;
   description: string;
   setDescription: (description: string) => void;
 }
@@ -47,35 +47,28 @@ interface ImageType {
 /**
  * Picture card component used in the PostDraft screen.
  * Receives all the API info by the `image` props
-*/
+ */
 const UploadPictureCard = (image: ImageType): JSX.Element => {
-  const getDimension = (): {width: number, height: number} => {
+  const getDimension = (): { width: number; height: number } => {
     const ratio = (Dimensions.window.width * 0.95) / image.width;
-    return ({ width: image.width, height: image.height * ratio });
+    return { width: image.width, height: image.height * ratio };
   };
 
   return (
     <View style={[styles.imageContainer, { width: '100%' }]}>
-      {
-        image.type === 'video'
-          ? (
-            <Video
-              source={{ uri: image.uri }}
-              shouldPlay
-              style={[styles.image, { height: getDimension().height }]}
-              isLooping
-              isMuted
-              usePoster
-              resizeMode="contain"
-            />
-          )
-          : (
-            <Image
-              source={{ uri: image.uri }}
-              style={[styles.image, { height: getDimension().height }]}
-            />
-          )
-      }
+      {image.type === 'video' ? (
+        <Video
+          source={{ uri: image.uri }}
+          shouldPlay
+          style={[styles.image, { height: getDimension().height }]}
+          isLooping
+          isMuted
+          usePoster
+          resizeMode="contain"
+        />
+      ) : (
+        <Image source={{ uri: image.uri }} style={[styles.image, { height: getDimension().height }]} />
+      )}
       <View style={styles.footer}>
         <TextInput
           placeholder="Description, #tags and @mentions"

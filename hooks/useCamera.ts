@@ -12,8 +12,7 @@ interface CameraType {
 }
 
 export function useCamera(): CameraType {
-  const [cameraHasPermission,
-    setCameraHasPermission] = useState(0);
+  const [cameraHasPermission, setCameraHasPermission] = useState(0);
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
   const cameraRef = useRef<Camera>();
 
@@ -33,9 +32,7 @@ export function useCamera(): CameraType {
   const handleCameraType = (): void => {
     const currentCameraType = cameraType;
     setCameraType(
-      currentCameraType === Camera.Constants.Type.back
-        ? Camera.Constants.Type.front
-        : Camera.Constants.Type.back,
+      currentCameraType === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back,
     );
   };
 
@@ -53,5 +50,6 @@ export function useCamera(): CameraType {
     cameraType,
     takePicture,
     AllowCamera,
-    handleCameraType };
+    handleCameraType,
+  };
 }

@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 /**
  * Masonry style screen displaying user's favorites posts
  * Posts can be removed by pressing the heart icon
-*/
+ */
 export default function FavoriteScreen(): JSX.Element {
   const navigation = useNavigation();
   const { images, refreshing, handleUnFave, handleRefresh } = useFavorites();

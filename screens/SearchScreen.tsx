@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SearchBar = ({ onValidate }: {onValidate: (finalString: string) => void}) => {
+const SearchBar = ({ onValidate }: { onValidate: (finalString: string) => void }) => {
   const [searchString, setSearchString] = useState('');
 
   return (
@@ -63,21 +63,18 @@ const SearchBar = ({ onValidate }: {onValidate: (finalString: string) => void}) 
 
 /**
  * Basic screen with a search bar in header to find posts linked to a keyword
-*/
+ */
 export default function SearchScreen(): JSX.Element {
   const navigation = useNavigation();
-  const { images, searchString, refreshing,
-    handleRefresh, loadNewPage, setSearchString } = useFeedSearch();
+  const { images, searchString, refreshing, handleRefresh, loadNewPage, setSearchString } = useFeedSearch();
 
   useEffect(() => {
     navigation.setOptions({
-      headerTitle: () => (
-        <SearchBar onValidate={setSearchString} />
-      ),
+      headerTitle: () => <SearchBar onValidate={setSearchString} />,
     });
   }, [navigation, setSearchString]);
 
-  if (!searchString) return (<View style={styles.container} />);
+  if (!searchString) return <View style={styles.container} />;
   if (searchString && !images) {
     return (
       <View style={{ flex: 1, backgroundColor: Color.dark.background, alignItems: 'center' }}>

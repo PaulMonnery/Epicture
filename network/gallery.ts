@@ -11,9 +11,7 @@ export interface GalleryOptions {
   page: number;
 }
 
-export async function getGallery(
-  { section, sort, page, window }: GalleryOptions,
-): Promise<Image[]> {
+export async function getGallery({ section, sort, page, window }: GalleryOptions): Promise<Image[]> {
   const data = new FormData();
 
   const config: AxiosRequestConfig = {
@@ -27,24 +25,26 @@ export async function getGallery(
   const ret = await axios(config);
   const res: Image[] = [];
 
-  ret.data.data.forEach((item: Gallery) => res.push({
-    id: item.id,
-    favorite: item.favorite,
-    ups: item.ups,
-    comment_count: item.comment_count,
-    favorite_count: item.favorite_count,
-    vote: item.vote,
-    views: item.views,
-    account_url: item.account_url,
-    title: item.title,
-    cover: item.cover,
-    is_album: item.is_album,
-    description: item.is_album ? item.images[0].description : item.description,
-    link: item.is_album ? item.images[0].link : item.link,
-    width: item.is_album ? item.images[0].width : item.width,
-    height: item.is_album ? item.images[0].height : item.height,
-    type: item.is_album ? item.images[0].type : item.type,
-  }));
+  ret.data.data.forEach((item: Gallery) =>
+    res.push({
+      id: item.id,
+      favorite: item.favorite,
+      ups: item.ups,
+      comment_count: item.comment_count,
+      favorite_count: item.favorite_count,
+      vote: item.vote,
+      views: item.views,
+      account_url: item.account_url,
+      title: item.title,
+      cover: item.cover,
+      is_album: item.is_album,
+      description: item.is_album ? item.images[0].description : item.description,
+      link: item.is_album ? item.images[0].link : item.link,
+      width: item.is_album ? item.images[0].width : item.width,
+      height: item.is_album ? item.images[0].height : item.height,
+      type: item.is_album ? item.images[0].type : item.type,
+    }),
+  );
 
   return res;
 }
@@ -65,24 +65,26 @@ export async function searchGallery(query: string, page: number): Promise<Image[
   const ret = await axios(config);
   const res: Image[] = [];
 
-  ret.data.data.forEach((item: Gallery) => res.push({
-    id: item.id,
-    favorite: item.favorite,
-    ups: item.ups,
-    comment_count: item.comment_count,
-    favorite_count: item.favorite_count,
-    vote: item.vote,
-    views: item.views,
-    account_url: item.account_url,
-    title: item.title,
-    cover: item.cover,
-    is_album: item.is_album,
-    description: item.is_album ? item.images[0].description : item.description,
-    link: item.is_album ? item.images[0].link : item.link,
-    width: item.is_album ? item.images[0].width : item.width,
-    height: item.is_album ? item.images[0].height : item.height,
-    type: item.is_album ? item.images[0].type : item.type,
-  }));
+  ret.data.data.forEach((item: Gallery) =>
+    res.push({
+      id: item.id,
+      favorite: item.favorite,
+      ups: item.ups,
+      comment_count: item.comment_count,
+      favorite_count: item.favorite_count,
+      vote: item.vote,
+      views: item.views,
+      account_url: item.account_url,
+      title: item.title,
+      cover: item.cover,
+      is_album: item.is_album,
+      description: item.is_album ? item.images[0].description : item.description,
+      link: item.is_album ? item.images[0].link : item.link,
+      width: item.is_album ? item.images[0].width : item.width,
+      height: item.is_album ? item.images[0].height : item.height,
+      type: item.is_album ? item.images[0].type : item.type,
+    }),
+  );
 
   return res;
 }

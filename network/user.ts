@@ -25,24 +25,26 @@ export async function getUserFavorite(): Promise<Image[]> {
   const ret = await axios(config);
   const res: Image[] = [];
 
-  ret.data.data.forEach((item: Favorite) => res.push({
-    id: item.id,
-    favorite: item.favorite,
-    ups: item.ups,
-    comment_count: item.comment_count,
-    favorite_count: item.favorite_count,
-    vote: item.vote,
-    views: item.views,
-    account_url: item.account_url,
-    title: item.title,
-    cover: item.cover,
-    description: item.description,
-    link: `https://i.imgur.com/${item.cover}.${item.type === 'video/mp4' ? 'mp4' : 'jpg'}`,
-    width: item.width,
-    height: item.height,
-    type: item.type,
-    is_album: item.is_album,
-  }));
+  ret.data.data.forEach((item: Favorite) =>
+    res.push({
+      id: item.id,
+      favorite: item.favorite,
+      ups: item.ups,
+      comment_count: item.comment_count,
+      favorite_count: item.favorite_count,
+      vote: item.vote,
+      views: item.views,
+      account_url: item.account_url,
+      title: item.title,
+      cover: item.cover,
+      description: item.description,
+      link: `https://i.imgur.com/${item.cover}.${item.type === 'video/mp4' ? 'mp4' : 'jpg'}`,
+      width: item.width,
+      height: item.height,
+      type: item.type,
+      is_album: item.is_album,
+    }),
+  );
   return res;
 }
 
@@ -81,24 +83,30 @@ export async function getUserSubmissions(): Promise<Image[]> {
   const ret = await axios(config);
   const res: Image[] = [];
 
-  ret.data.data.forEach((item: Gallery) => res.push({
-    id: item.id,
-    favorite: item.favorite,
-    ups: item.ups,
-    comment_count: item.comment_count,
-    favorite_count: item.favorite_count,
-    vote: item.vote,
-    views: item.views,
-    account_url: item.account_url,
-    title: item.title,
-    cover: item.cover,
-    is_album: item.is_album,
-    description: item.is_album ? item.images[0].description : item.description,
-    width: item.is_album ? item.images[0].width : item.width,
-    height: item.is_album ? item.images[0].height : item.height,
-    type: item.is_album ? item.images[0].type : item.type,
-    link: item.is_album ? `https://i.imgur.com/${item.cover}.${(item.is_album ? item.images[0].type : item.type) === 'video/mp4' ? 'mp4' : 'jpg'}` : item.link,
-  }));
+  ret.data.data.forEach((item: Gallery) =>
+    res.push({
+      id: item.id,
+      favorite: item.favorite,
+      ups: item.ups,
+      comment_count: item.comment_count,
+      favorite_count: item.favorite_count,
+      vote: item.vote,
+      views: item.views,
+      account_url: item.account_url,
+      title: item.title,
+      cover: item.cover,
+      is_album: item.is_album,
+      description: item.is_album ? item.images[0].description : item.description,
+      width: item.is_album ? item.images[0].width : item.width,
+      height: item.is_album ? item.images[0].height : item.height,
+      type: item.is_album ? item.images[0].type : item.type,
+      link: item.is_album
+        ? `https://i.imgur.com/${item.cover}.${
+            (item.is_album ? item.images[0].type : item.type) === 'video/mp4' ? 'mp4' : 'jpg'
+          }`
+        : item.link,
+    }),
+  );
   return res;
 }
 
@@ -138,8 +146,12 @@ export async function getUserSettings(): Promise<Settings> {
 }
 
 export async function updateUserSettings(
-  username: string, bio: string, messaging_enabled: boolean, public_images: boolean,
-  show_mature: boolean, newsletter_subscribed: boolean,
+  username: string,
+  bio: string,
+  messaging_enabled: boolean,
+  public_images: boolean,
+  show_mature: boolean,
+  newsletter_subscribed: boolean,
 ): Promise<void> {
   const data = new FormData();
   const token = await getAuthToken();
