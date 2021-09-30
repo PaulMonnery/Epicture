@@ -53,7 +53,7 @@ export default function ProfileScreen(): JSX.Element {
             try {
               await signOut();
             } catch (error) {
-              alert(error.message);
+              alert(error);
             }
           },
         },
@@ -63,8 +63,7 @@ export default function ProfileScreen(): JSX.Element {
   };
 
   return (
-    // eslint-disable-next-line
-    <React.Fragment>
+    <>
       <LinearGradient colors={['#a96465', '#321d35']} style={styles.container}>
         <TouchableOpacity style={styles.signout} onPress={confirmSignOut}>
           <LogoutPicto color="white" width={20} height={20} />
@@ -102,6 +101,6 @@ export default function ProfileScreen(): JSX.Element {
         </View>
       </LinearGradient>
       <ProfileTabNavigator />
-    </React.Fragment>
+    </>
   );
 }

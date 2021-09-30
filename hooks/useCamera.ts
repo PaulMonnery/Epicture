@@ -4,7 +4,7 @@ import { Camera, CameraCapturedPicture } from 'expo-camera';
 interface CameraType {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   cameraType: any;
-  cameraRef: React.MutableRefObject<Camera | undefined>;
+  cameraRef: React.MutableRefObject<Camera | null>;
   cameraHasPermission: number;
   takePicture: () => Promise<CameraCapturedPicture | undefined>;
   AllowCamera: () => Promise<number>;
@@ -14,7 +14,7 @@ interface CameraType {
 export function useCamera(): CameraType {
   const [cameraHasPermission, setCameraHasPermission] = useState(0);
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
-  const cameraRef = useRef<Camera>();
+  const cameraRef = useRef<Camera>(null);
 
   useEffect(() => {
     (async (): Promise<void> => {

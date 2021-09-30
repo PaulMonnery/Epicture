@@ -64,8 +64,8 @@ export default function ProfileSettingsScreen(): JSX.Element {
   const handleSubmit = async () => {
     if (settings && bio) {
       await updateUserSettings(
-        settings.account_url,
         bio,
+        settings.account_url,
         settings.messaging_enabled,
         settings.public_images,
         settings.show_mature,
@@ -73,6 +73,8 @@ export default function ProfileSettingsScreen(): JSX.Element {
       );
     }
   };
+
+  if (!settings) return <Text>Loading...</Text>;
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ alignItems: 'center' }}>
@@ -83,11 +85,11 @@ export default function ProfileSettingsScreen(): JSX.Element {
           keyboardType="default"
           returnKeyType="done"
           blurOnSubmit
-          value={settings?.account_url}
+          value={settings.account_url}
           onSubmitEditing={() => Keyboard.dismiss()}
           style={styles.titleInput}
           placeholderTextColor="#a0a1a3"
-          onChangeText={(text) => settings && setSettings({ ...settings, account_url: text })}
+          onChangeText={(text) => setSettings({ ...settings, account_url: text })}
         />
         <Text style={{ color: 'white', marginBottom: 5, marginTop: 15 }}>Bio</Text>
         <TextInput
@@ -103,31 +105,29 @@ export default function ProfileSettingsScreen(): JSX.Element {
         />
         <View style={styles.checkboxContainer}>
           <CheckBox
-            checked={settings?.show_mature || false}
-            onPress={() => settings && setSettings({ ...settings, show_mature: !settings.show_mature })}
+            checked={settings.show_mature || false}
+            onPress={() => setSettings({ ...settings, show_mature: !settings.show_mature })}
           />
           <Text style={styles.checkboxText}>Show mature posts and comments</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <CheckBox
-            checked={settings?.messaging_enabled || false}
-            onPress={() => settings && setSettings({ ...settings, messaging_enabled: !settings.messaging_enabled })}
+            checked={settings.messaging_enabled || false}
+            onPress={() => setSettings({ ...settings, messaging_enabled: !settings.messaging_enabled })}
           />
           <Text style={styles.checkboxText}>Allow direct messaging</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <CheckBox
-            checked={settings?.public_images || false}
-            onPress={() => settings && setSettings({ ...settings, public_images: !settings.public_images })}
+            checked={settings.public_images || false}
+            onPress={() => setSettings({ ...settings, public_images: !settings.public_images })}
           />
           <Text style={styles.checkboxText}>Set images as public by default</Text>
         </View>
         <View style={styles.checkboxContainer}>
           <CheckBox
-            checked={settings?.newsletter_subscribed || false}
-            onPress={() =>
-              settings && setSettings({ ...settings, newsletter_subscribed: !settings.newsletter_subscribed })
-            }
+            checked={settings.newsletter_subscribed || false}
+            onPress={() => setSettings({ ...settings, newsletter_subscribed: !settings.newsletter_subscribed })}
           />
           <Text style={styles.checkboxText}>Subscription to news letter</Text>
         </View>

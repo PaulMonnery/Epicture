@@ -34,7 +34,7 @@ export default function HomeScreen(): JSX.Element {
     });
   }, [navigation]);
 
-  if (!images) {
+  if (images.length === 0) {
     return (
       <View style={[styles.container, { alignItems: 'center' }]}>
         <Skeleton style={{ marginTop: '6%' }} />

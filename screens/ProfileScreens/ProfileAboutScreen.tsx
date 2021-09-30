@@ -78,14 +78,16 @@ export default function ProfileAboutScreen(): JSX.Element {
     if (!nbComments) getNbComments();
   }, [userBase, nbPosts, nbFavorites, nbComments]);
 
+  if (!userBase) return <Text>Loading...</Text>;
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={[styles.statBox]} activeOpacity={0.85}>
-        <Text style={styles.buttonText}>{userBase?.reputation_name}</Text>
+        <Text style={styles.buttonText}>{userBase.reputation_name}</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <UpvotePicto color="#56b474" width={60} height={60} />
           <Text style={{ marginLeft: -5, color: '#56b474', fontSize: 40, fontWeight: 'bold' }}>
-            {userBase?.reputation}
+            {userBase.reputation}
           </Text>
         </View>
       </TouchableOpacity>
@@ -112,10 +114,10 @@ export default function ProfileAboutScreen(): JSX.Element {
       </TouchableOpacity>
 
       <TouchableOpacity style={[styles.statBox]} activeOpacity={0.85}>
-        <Text style={styles.bio}>{userBase?.bio}</Text>
+        <Text style={styles.bio}>{userBase.bio}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.statBox]} activeOpacity={0.85}>
-        <Text style={styles.bio}>Joined {new Date(userBase?.created * 1000).toDateString()}</Text>
+        <Text style={styles.bio}>Joined {new Date(userBase.created * 1000).toDateString()}</Text>
       </TouchableOpacity>
     </View>
   );

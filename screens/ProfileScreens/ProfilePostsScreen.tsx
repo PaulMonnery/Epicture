@@ -22,7 +22,7 @@ export default function SubmissionsScreen(): JSX.Element {
   const navigation = useNavigation();
   const { images, refreshing, handleSuppress, handleRefresh } = useSubmissions();
 
-  if (!images) {
+  if (images.length === 0) {
     return (
       <View style={[styles.container, { alignItems: 'center' }]}>
         <Skeleton style={{ marginTop: '6%' }} />

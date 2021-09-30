@@ -22,7 +22,7 @@ export default function FavoriteScreen(): JSX.Element {
   const navigation = useNavigation();
   const { images, refreshing, handleUnFave, handleRefresh } = useFavorites();
 
-  if (!images) {
+  if (images.length === 0) {
     return (
       <View style={[styles.container, { alignItems: 'center' }]}>
         <Skeleton style={{ marginTop: '6%' }} />

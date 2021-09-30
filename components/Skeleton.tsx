@@ -68,8 +68,7 @@ const thirdLayout = [
 /**
  * Skeleton components displayed when a page is loading.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Skeleton = ({ style }: { style: Record<string, any> }): JSX.Element => (
+const Skeleton = ({ style }: { style: Record<string, string | number> }): JSX.Element => (
   <View style={[styles.card, style]}>
     <SkeletonContent
       containerStyle={styles.top}

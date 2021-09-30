@@ -22,10 +22,8 @@ interface ButtonProps {
   text?: string;
   children?: React.ReactNode;
   onPress?: () => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  buttonStyle?: Record<string, any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  textStyle?: Record<string, any>;
+  buttonStyle?: Record<string, string | number>;
+  textStyle?: Record<string, string | number>;
 }
 
 /**

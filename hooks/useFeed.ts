@@ -1,16 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { getGallery, GalleryOptions } from '../network/gallery';
 import Image from '../types/image';
 
 export default function useFeed(): {
-  images: Image[] | null;
+  images: Image[];
   refreshing: boolean;
   info: GalleryOptions;
   setInfo: React.Dispatch<React.SetStateAction<GalleryOptions>>;
   handleRefresh: () => Promise<void>;
   loadNewPage: () => Promise<void>;
 } {
-  const [images, setImages] = useState<Image[] | null>(null);
+  const [images, setImages] = useState<Image[]>([]);
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const [info, setInfo] = useState<GalleryOptions>({ section: 'hot', sort: 'viral', page: 1, window: 'day' });
 
@@ -20,7 +21,6 @@ export default function useFeed(): {
       if (gallery) setImages(gallery);
     };
     if (!images && !refreshing) loadGallery();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
 
   useEffect(() => {
@@ -29,7 +29,6 @@ export default function useFeed(): {
       if (gallery) setImages(gallery);
     };
     reloadGallery();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [info.section, info.sort]);
 
   const handleRefresh = async (): Promise<void> => {
@@ -38,7 +37,7 @@ export default function useFeed(): {
     newInfo.page += 1;
     const gallery = await getGallery(newInfo);
     if (gallery) {
-      setImages(null);
+      setImages([]);
       setImages(gallery);
       setInfo(newInfo);
     }

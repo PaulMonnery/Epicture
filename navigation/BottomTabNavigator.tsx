@@ -163,6 +163,7 @@ export default function BottomTabNavigator(): JSX.Element {
         name="Profile"
         component={ProfileNavigator}
         options={{
+          // eslint-disable-next-line react/no-unused-prop-types
           tabBarIcon: ({ color }: { color: string }) => <MaterialIcons size={30} name="person-outline" color={color} />,
         }}
       />

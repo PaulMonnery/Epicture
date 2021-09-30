@@ -55,7 +55,12 @@ export default function AuthScreen(): JSX.Element {
     <LinearGradient style={styles.container} colors={['#0d134f', '#00cdac']}>
       <Text style={styles.title}>Epicture</Text>
       <Text style={styles.subtitle}>An EPITECH project</Text>
-      <LoginButton onPress={handleHelpPress} text="Login with imgur" width="80%" buttonStyle={{ marginTop: 70 }} />
+      <LoginButton
+        onPress={() => handleHelpPress()}
+        text="Login with imgur"
+        width="80%"
+        buttonStyle={{ marginTop: 70 }}
+      />
       <Image style={styles.logo} source={ImgurLogo} resizeMethod="scale" resizeMode="cover" />
     </LinearGradient>
   );

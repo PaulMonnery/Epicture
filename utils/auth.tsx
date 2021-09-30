@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
       let username;
 
       try {
-        userToken = await SecureStore.getItemAsync(AUTH_CLIENT_ID);
+        userToken = await SecureStore.getItemAsync(AUTH_CLIENT_ID!);
         username = await SecureStore.getItemAsync('username');
       } catch (e) {
         console.error(e);
@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
 
   const authContext = {
     signIn: async (token: string, username: string): Promise<void> => {
-      await SecureStore.setItemAsync(AUTH_CLIENT_ID, token);
+      await SecureStore.setItemAsync(AUTH_CLIENT_ID!, token);
       await SecureStore.setItemAsync('username', username);
       setState({
         ...state,
@@ -91,7 +91,7 @@ export const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {
       });
     },
     signOut: async (): Promise<void> => {
-      await SecureStore.deleteItemAsync(AUTH_CLIENT_ID);
+      await SecureStore.deleteItemAsync(AUTH_CLIENT_ID!);
       setState({
         ...state,
         isSignout: true,

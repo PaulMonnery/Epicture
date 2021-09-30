@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
 });
 
 interface SmallPictureCardProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  style?: Record<string, any>;
+  style?: Record<string, string | number>;
   onPress?: () => void;
   onSuppress?: (id: string) => void;
 
@@ -87,7 +86,7 @@ const SmallPictureCard = ({
             try {
               if (onSuppress) onSuppress(id);
             } catch (error) {
-              alert(error.message);
+              alert(error);
             }
           },
         },
@@ -100,7 +99,7 @@ const SmallPictureCard = ({
     try {
       await Share.share({ url: link });
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
 

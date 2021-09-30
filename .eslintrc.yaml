@@ -22,6 +22,7 @@ rules:
   no-console: "off"
   global-require: "off"
   object-curly-newline: "off"
+  "@typescript-eslint/no-non-null-assertion": "off"
 
   react/react-in-jsx-scope: "off"
   react/prop-types: ["error", { "ignore": ["navigation"] }]

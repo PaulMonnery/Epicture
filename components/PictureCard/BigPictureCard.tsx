@@ -97,8 +97,7 @@ const styles = StyleSheet.create({
 });
 
 interface BigPictureCardProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  style?: Record<string, any>;
+  style?: Record<string, string | number>;
   onPress?: () => void;
   onFave?: (id: string) => void;
 
@@ -152,7 +151,7 @@ const BigPictureCard = ({
     try {
       await Share.share({ url: link });
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
 
@@ -162,7 +161,7 @@ const BigPictureCard = ({
       setFaved(!faved);
       await faveAlbum(id);
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
 
@@ -171,7 +170,7 @@ const BigPictureCard = ({
       setVoted(!voted);
       await voteAlbum(id, voted ? 'veto' : 'up');
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
 

@@ -4,12 +4,12 @@ import { faveAlbum } from '../network/album';
 import Image from '../types/image';
 
 export default function useFavorites(): {
-  images: Image[] | null;
+  images: Image[];
   refreshing: boolean;
   handleUnFave: (id: string) => Promise<void>;
   handleRefresh: () => Promise<void>;
 } {
-  const [images, setImages] = useState<Image[] | null>(null);
+  const [images, setImages] = useState<Image[]>([]);
   const [refreshing, setRefreshing] = useState<boolean>(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function useFavorites(): {
       const favorites = await getUserFavorite();
       if (favorites) setImages(favorites);
     };
-    if (!images) loadFavorite();
+    if (images.length === 0) loadFavorite();
   }, [images]);
 
   const handleUnFave = async (id: string): Promise<void> => {
@@ -36,7 +36,7 @@ export default function useFavorites(): {
     setRefreshing(true);
     const favorites = await getUserFavorite();
     if (favorites) {
-      setImages(null);
+      setImages([]);
       setImages(favorites);
     }
     setRefreshing(false);

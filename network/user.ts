@@ -97,9 +97,9 @@ export async function getUserSubmissions(): Promise<Image[]> {
       cover: item.cover,
       is_album: item.is_album,
       description: item.is_album ? item.images[0].description : item.description,
-      width: item.is_album ? item.images[0].width : item.width,
-      height: item.is_album ? item.images[0].height : item.height,
-      type: item.is_album ? item.images[0].type : item.type,
+      width: item.is_album ? item.images[0].width : item.width!,
+      height: item.is_album ? item.images[0].height : item.height!,
+      type: item.is_album ? item.images[0].type : item.type!,
       link: item.is_album
         ? `https://i.imgur.com/${item.cover}.${
             (item.is_album ? item.images[0].type : item.type) === 'video/mp4' ? 'mp4' : 'jpg'

@@ -5,23 +5,23 @@ import { deleteAlbum } from '../network/album';
 import Image from '../types/image';
 
 export default function useSubmissions(): {
-  images: Image[] | null | undefined;
+  images: Image[] | undefined;
   refreshing: boolean;
   handleSuppress: (id: string) => void;
   handleRefresh: () => Promise<void>;
 } {
-  const [images, setImages] = useState<Image[] | null>();
+  const [images, setImages] = useState<Image[]>([]);
   const [refreshing, setRefreshing] = useState<boolean>(false);
   useEffect(() => {
     const loadSubmissions = async () => {
       const submissions = await getUserSubmissions();
       if (submissions) setImages(submissions);
     };
-    if (!images) loadSubmissions();
+    if (images.length === 0) loadSubmissions();
   }, [images]);
 
   const handleSuppress = (id: string) => {
-    const oldImages = [...images];
+    const oldImages = images ? [...images] : [];
     for (let index = 0; index < oldImages.length; index += 1) {
       if (oldImages[index].id === id) {
         if (oldImages[index].is_album) deleteAlbum(id);
@@ -37,7 +37,7 @@ export default function useSubmissions(): {
     setRefreshing(true);
     const submissions = await getUserSubmissions();
     if (submissions) {
-      setImages(null);
+      setImages([]);
       setImages(submissions);
     }
     setRefreshing(false);

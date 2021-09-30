@@ -130,7 +130,7 @@ export default function PictureScreen({ route }: { route: { params: { data: Imag
     try {
       await Share.share({ url: data.link });
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
 
@@ -139,7 +139,7 @@ export default function PictureScreen({ route }: { route: { params: { data: Imag
       setFaved(!faved);
       await faveAlbum(data.id);
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
 
@@ -148,7 +148,7 @@ export default function PictureScreen({ route }: { route: { params: { data: Imag
       setVoted(!voted);
       await voteAlbum(data.id, voted ? 'veto' : 'up');
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   };
 
@@ -238,6 +238,8 @@ export default function PictureScreen({ route }: { route: { params: { data: Imag
               onPress={(): void => alert('comment')}
             >
               <UpvotePicto
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 style={{ transform: [{ rotate: '180deg' }] }}
                 strokeWidth={2}
                 stroke="white"

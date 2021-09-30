@@ -75,7 +75,7 @@ export default function SearchScreen(): JSX.Element {
   }, [navigation, setSearchString]);
 
   if (!searchString) return <View style={styles.container} />;
-  if (searchString && !images) {
+  if (searchString && images.length === 0) {
     return (
       <View style={{ flex: 1, backgroundColor: Color.dark.background, alignItems: 'center' }}>
         <Skeleton style={{ marginTop: '6%' }} />
