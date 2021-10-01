@@ -5,18 +5,18 @@ The app is built with Expo (React Native) and is written in Typescript
 
 ## Requirements
 
-#### The Expo Client App
+### The Expo Client App
 
-The Expo App will load the build bundle of the Expo CLI and allow you to test our app without deploying it or building with Android Studio
+With Expo, you don't have to manyally install the built APK or IPA on your phone.  
+The Expo App will load the JS bundle and allow you to test my Epicture app without deploying it or building it with Android Studio/XCode
 
 Download links:
 - [iOS](https://apps.apple.com/us/app/expo-client/id982107779)
 - [Android](https://play.google.com/store/apps/details?id=host.exp.exponent)
 
-#### An imgur account
+### An imgur account
 
-The app requires you to login with an imgur account, with email and password **only**: auth with Google or Social medias are not supported
-[Create an account here](https://imgur.com/register).
+The app requires you to login with an imgur account, with email and password **only**: auth with Google or Social medias are not supported. You can create an account on the [imgur website](https://imgur.com/register).
 
 
 ## Run the App with no install
@@ -24,25 +24,57 @@ The app requires you to login with an imgur account, with email and password **o
 If you want to test the app without building local code, it is very simple:
 
 - Install the expo app and create your imgur account
-- Visist the [expo dev page](https://expo.dev/@paulmonnery/Epicture) of the project and scan the QR Code with your app or camera
+- Visist the [expo dev page](https://expo.dev/@paulmonnery/Epicture) of the project and scan the QR Code with the Expo app or your phone camera
 - Enjoy the app with your Imgur account
 
 ## Build the app
 
-#### Create an imgur Oauth2 application
+### Create an imgur Oauth2 application
 
-The Oauth2 application is required to request the public API. A callback URL is set in the app and is depedent of you IP because of Expo behavior. The calback URL must be `exp://your_dev_server_id`  
+The Oauth2 application is required to request the public API. A callback URL is set in the app and is depedent of you IP because of how Expo works. The calback URL must be `exp://your_dev_server_address`  
 - [create the Oauth App here](https://imgur.com/account/settings/apps).  
 - replace the callback URL and client id variables in the `.env.example` by your own
-- rename the file into `.env`.
+- rename the the `.env.example` to `.env`.
 
-## Run with Expo
+### Run with Expo
 
 To launch the app:
 - Install the expo client on your phone
 - Run `yarn install` to install dependencies
 - Run `yarn start` to start the development server
 - Scan the QR code displayed in your terminal with your phone
+
+## App Preview
+
+#### Feed
+
+<p align="center">
+  <img src=".github/gif/feed.gif" width="40%;" />
+</p>
+
+#### Search
+
+<p align="center">
+  <img src=".github/gif/search.gif" width="40%;" />
+</p>
+
+#### Favorites
+
+<p align="center">
+  <img src=".github/gif/favorites.gif" width="40%;" />
+</p>
+
+#### Profile
+
+<p align="center">
+  <img src=".github/gif/profile.gif" width="40%;" />
+</p>
+
+#### Upload
+
+<p align="center">
+  <img src=".github/gif/upload.gif" width="40%;" />
+</p>
 
 ## Code Structure
 
