@@ -31,5 +31,6 @@ rules:
   react/jsx-props-no-spreading: "off"
 
   prettier/prettier: warn
-  import/prefer-default-export: "off"
   jsx-a11y/accessible-emoji: "off"
+  import/prefer-default-export: "off"
+  import/no-extraneous-dependencies: "off"
